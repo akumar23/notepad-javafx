@@ -1,5 +1,7 @@
 package sample;
 
+package app;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.FileChooser;
@@ -16,6 +18,7 @@ import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -44,6 +47,7 @@ public class Main extends Application {
         TextArea text = new TextArea();
         //TextField text = new TextField();
         
+        
         //text.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
         //Font font = Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12);
         
@@ -62,6 +66,7 @@ public class Main extends Application {
         MenuItem fontItem1 = new MenuItem("Size 12");
         MenuItem fontItem2 = new MenuItem("Size 14");
         MenuItem fontItem3 = new MenuItem("Size 20");
+        MenuItem fontItem4 = new MenuItem("Size 30");
 
         //adds menu items to the appropriate menus
         fileMenu.getItems().add(openItem);
@@ -69,6 +74,7 @@ public class Main extends Application {
         fontMenu.getItems().add(fontItem1);
         fontMenu.getItems().add(fontItem2);
         fontMenu.getItems().add(fontItem3);
+        fontMenu.getItems().add(fontItem4);
 
         //creates a bar and adds menus to that bar
         MenuBar bar = new MenuBar();
@@ -80,14 +86,14 @@ public class Main extends Application {
         VBox box = new VBox(bar, text);
 
         //declares a file chooser for the choose file option
-        final FileChooser choose = new FileChooser();
+        final FileChooser chooser = new FileChooser();
         
         //makes a set on action method for openItem
         openItem.setOnAction(
                 new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
-                        File file = choose.showOpenDialog(primaryStage);
+                        File file = chooser.showOpenDialog(primaryStage);
                         if(file != null){
                             //openFile(file);
                             ArrayList<String> txt = read(file);
@@ -101,25 +107,20 @@ public class Main extends Application {
         );
 
         //declares another file chooser for the save option
-        FileChooser save = new FileChooser();
-        save.setTitle("Save");
-        saveItem.setOnAction(
-                new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent actionEvent) {
-                        save.showSaveDialog(primaryStage);
-                    }
-                }
-        );
+        FileChooser saver = new FileChooser();
         
-        fontItem1.setOnAction(
-        		new EventHandler<ActionEvent>() {
-        			public void handle(ActionEvent actionevent) {
-        				//text.setFont(12);
-        			}
-        			
-        		}
-        );
+        //opens the file menu allowing the user to save the text file under a custom name
+        saveItem.setOnAction((ActionEvent a) -> {
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+            saver.getExtensionFilters().add(extFilter);
+            
+            File f = saver.showSaveDialog(primaryStage);
+            if(f != null){
+            	saveFile(text.getText(), f);
+            }
+        });
+        
+
 
         primaryStage.setScene(new Scene(box, 500, 500));
         primaryStage.show();
@@ -158,4 +159,5 @@ public class Main extends Application {
         launch(args);
     }
 }
+
 
