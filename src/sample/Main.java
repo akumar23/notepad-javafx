@@ -46,6 +46,7 @@ public class Main extends Application {
         final StringBuilder txtSize = new StringBuilder("-fx-font-size:12;");
         final StringBuilder style = new StringBuilder("-fx-font-style:normal;");
         final StringBuilder font = new StringBuilder("-fx-font-style:normal;");
+        final StringBuilder highlight = new StringBuilder("-fx-highlight-fill: lightgray; -fx-highlight-text-fill: firebrick;");
         final StringBuilder themeColor = new StringBuilder("-fx-control-inner-background:white;");
         
         //creates a text area and sets its height and width 
@@ -89,6 +90,12 @@ public class Main extends Application {
         MenuItem italicItem = new MenuItem("Italics");
         MenuItem boldItem = new MenuItem("Bold");
         
+        MenuItem yellowHlt = new MenuItem("yellow");
+        MenuItem redHlt = new MenuItem("red");
+        MenuItem greenHlt = new MenuItem("green");
+        MenuItem blueHlt = new MenuItem("blue");
+        MenuItem blackHlt = new MenuItem("black");
+        
         MenuItem whiteTheme = new MenuItem("white");
         MenuItem blackTheme = new MenuItem("black");
         
@@ -115,6 +122,12 @@ public class Main extends Application {
         fontStyle.getItems().add(defaultStyle);
         fontStyle.getItems().add(italicItem);
         fontStyle.getItems().add(boldItem);
+        
+        highlightMenu.getItems().add(yellowHlt);
+        highlightMenu.getItems().add(redHlt);
+        highlightMenu.getItems().add(greenHlt);
+        highlightMenu.getItems().add(blueHlt);
+        highlightMenu.getItems().add(blackHlt);
         
         themeMenu.getItems().add(whiteTheme); 
         themeMenu.getItems().add(blackTheme);
@@ -276,7 +289,7 @@ public class Main extends Application {
         			public void handle(ActionEvent actionevent) {
         				txtSize.delete(0,txtSize.length());
         				txtSize.append("-fx-font-size:12;");
-        				text.setStyle(color.toString() + style.toString() + font.toString() + themeColor.toString() + "-fx-font-size:12");
+        				text.setStyle(color.toString() + style.toString() + font.toString() + themeColor.toString() + "-fx-font-size:12;");
         			}
         			
         		}
@@ -287,7 +300,7 @@ public class Main extends Application {
         			public void handle(ActionEvent actionevent) {
         				txtSize.delete(0,txtSize.length());
         				txtSize.append("-fx-font-size:14;");
-        				text.setStyle(color.toString() + style.toString() + font.toString() + themeColor.toString() + "-fx-font-size:14");
+        				text.setStyle(color.toString() + style.toString() + font.toString() + themeColor.toString() + "-fx-font-size:14;");
         			}
         			
         		}
@@ -298,7 +311,7 @@ public class Main extends Application {
         			public void handle(ActionEvent actionevent) {
         				txtSize.delete(0,txtSize.length());
         				txtSize.append("-fx-font-size:20;");
-        				text.setStyle(color.toString() + style.toString() + font.toString() + themeColor.toString() + "-fx-font-size:20");
+        				text.setStyle(color.toString() + style.toString() + font.toString() + themeColor.toString() + "-fx-font-size:20;");
         			}
         			
         		}
@@ -309,7 +322,7 @@ public class Main extends Application {
         			public void handle(ActionEvent actionevent) {
         				txtSize.delete(0,txtSize.length());
         				txtSize.append("-fx-font-size:30;");
-        				text.setStyle(color.toString() + style.toString() + font.toString() + themeColor.toString() + "-fx-font-size:30");
+        				text.setStyle(color.toString() + style.toString() + font.toString() + themeColor.toString() + "-fx-font-size:30;");
         			}
         			
         		}
@@ -320,7 +333,7 @@ public class Main extends Application {
         			public void handle(ActionEvent actionevent) {
         				style.delete(0,txtSize.length());
         				style.append("-fx-font-style:normal;");
-        				text.setStyle(color.toString() + txtSize.toString() + font.toString() + themeColor.toString() + "-fx-font-style:normal");
+        				text.setStyle(color.toString() + txtSize.toString() + font.toString() + themeColor.toString() + "-fx-font-style:normal;");
         			}
         			
         		}
@@ -332,7 +345,7 @@ public class Main extends Application {
         			public void handle(ActionEvent actionevent) {
         				font.delete(0,txtSize.length());
         				font.append("-fx-font-style:serif;");
-        				text.setStyle(color.toString() + txtSize.toString() + style.toString() + themeColor.toString() + "-fx-font-family:serif");
+        				text.setStyle(color.toString() + txtSize.toString() + style.toString() + themeColor.toString() + "-fx-font-family:serif;");
         			}
         			
         		}
@@ -343,7 +356,7 @@ public class Main extends Application {
         			public void handle(ActionEvent actionevent) {
         				font.delete(0,txtSize.length());
         				font.append("-fx-font-style:monospace;");
-        				text.setStyle(color.toString() + txtSize.toString() + style.toString() + themeColor.toString() + "-fx-font-family:monospace");
+        				text.setStyle(color.toString() + txtSize.toString() + style.toString() + themeColor.toString() + "-fx-font-family:monospace;");
         			}
         			
         		}
@@ -354,7 +367,7 @@ public class Main extends Application {
         			public void handle(ActionEvent actionevent) {
         				font.delete(0,txtSize.length());
         				font.append("-fx-font-style:impact;");
-        				text.setStyle(color.toString() + txtSize.toString() + style.toString() + themeColor.toString() + "-fx-font-family:impact");
+        				text.setStyle(color.toString() + txtSize.toString() + style.toString() + themeColor.toString() + "-fx-font-family:impact;");
         			}
         			
         		}
@@ -365,7 +378,7 @@ public class Main extends Application {
         			public void handle(ActionEvent actionevent) {
         				font.delete(0,txtSize.length());
         				font.append("-fx-font-style:sans-serif;");
-        				text.setStyle(color.toString() + txtSize.toString() + style.toString() + themeColor.toString() + "-fx-font-family:sans-serif");
+        				text.setStyle(color.toString() + txtSize.toString() + style.toString() + themeColor.toString() + "-fx-font-family:sans-serif;");
         			}
         			
         		}
@@ -390,6 +403,61 @@ public class Main extends Application {
         				text.setStyle(color.toString() + txtSize.toString() + "-fx-font-weight:bold;" + themeColor.toString() + font.toString());
         			}
         			
+        		}
+        );
+        
+        yellowHlt.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				highlight.delete(0,  highlight.length());
+        				highlight.append("-fx-highlight-fill: yellow; -fx-highlight-text-fill: black;");
+            			text.setStyle(color.toString() + font.toString() + themeColor.toString() + style.toString() + txtSize.toString() + highlight.toString());
+                		text.selectRange(0, text.getLength());
+        			}
+        		}
+        );
+        
+        redHlt.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				highlight.delete(0,  highlight.length());
+        				highlight.append("-fx-highlight-fill: red; -fx-highlight-text-fill: black;");
+            			text.setStyle(color.toString() + font.toString() + themeColor.toString() + style.toString() + txtSize.toString() + highlight.toString());
+                		text.selectRange(0, text.getLength());
+        			}
+        		}
+        );
+        
+        greenHlt.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				highlight.delete(0,  highlight.length());
+        				highlight.append("-fx-highlight-fill: green; -fx-highlight-text-fill: white;");
+            			text.setStyle(color.toString() + font.toString() + themeColor.toString() + style.toString() + txtSize.toString() + highlight.toString());
+                		text.selectRange(0, text.getLength());
+        			}
+        		}
+        );
+        
+        blueHlt.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				highlight.delete(0,  highlight.length());
+        				highlight.append("-fx-highlight-fill: blue; -fx-highlight-text-fill: white;");
+            			text.setStyle(color.toString() + font.toString() + themeColor.toString() + style.toString() + txtSize.toString() + highlight.toString());
+                		text.selectRange(0, text.getLength());
+        			}
+        		}
+        );
+        
+        blackHlt.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				highlight.delete(0,  highlight.length());
+        				highlight.append("-fx-highlight-fill: black; -fx-highlight-text-fill: white;");
+            			text.setStyle(color.toString() + font.toString() + themeColor.toString() + style.toString() + txtSize.toString() + highlight.toString());
+                		text.selectRange(0, text.getLength());
+        			}
         		}
         );
 
