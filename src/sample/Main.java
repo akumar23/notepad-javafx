@@ -8,19 +8,13 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Line;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
 import javafx.scene.control.TextArea;
-import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.swing.JTextArea;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -42,10 +36,10 @@ public class Main extends Application {
         primaryStage.setTitle("Untitled");
         
         //variables to hold the initial values of the text
-        final StringBuilder color = new StringBuilder("-fx-text-inner-color: black;");
-        final StringBuilder txtSize = new StringBuilder("-fx-font-size:12;");
-        final StringBuilder style = new StringBuilder("-fx-font-style:normal;");
         final StringBuilder font = new StringBuilder("-fx-font-style:normal;");
+        final StringBuilder txtSize = new StringBuilder("-fx-font-size:12;");
+        final StringBuilder color = new StringBuilder("-fx-text-inner-color: black;");
+        final StringBuilder style = new StringBuilder("-fx-font-style:normal;");
         final StringBuilder highlight = new StringBuilder("-fx-highlight-fill: lightgray; -fx-highlight-text-fill: firebrick;");
         final StringBuilder themeColor = new StringBuilder("-fx-control-inner-background:white;");
         
@@ -76,28 +70,36 @@ public class Main extends Application {
         MenuItem monspace = new MenuItem("Monospace");
         MenuItem impact = new MenuItem("Impact");
         MenuItem sans_serif = new MenuItem("Sans-Serif");
+        MenuItem chalkboard = new MenuItem("Chalkboard");
+        MenuItem trattatello = new MenuItem("Trattatello");
         
         MenuItem fontSize1 = new MenuItem("Size 12");
         MenuItem fontSize2 = new MenuItem("Size 14");
         MenuItem fontSize3 = new MenuItem("Size 20");
         MenuItem fontSize4 = new MenuItem("Size 30");
+        MenuItem fontSize5 = new MenuItem("Size 38");
+        MenuItem fontSize6 = new MenuItem("Size 48");
+        MenuItem fontSize7 = new MenuItem("Size 55");
         
-        MenuItem blackTxt = new MenuItem("black");
-        MenuItem redTxt = new MenuItem("red");
-        MenuItem blueTxt = new MenuItem("blue");
+        MenuItem blackTxt = new MenuItem("Black");
+        MenuItem redTxt = new MenuItem("Red");
+        MenuItem blueTxt = new MenuItem("Blue");
+        MenuItem greenTxt = new MenuItem("Green");
+        MenuItem pinkTxt = new MenuItem("Pink");
+        MenuItem purpleTxt = new MenuItem("Purple");
         
         MenuItem defaultStyle = new MenuItem("Default");
         MenuItem italicItem = new MenuItem("Italics");
         MenuItem boldItem = new MenuItem("Bold");
         
-        MenuItem yellowHlt = new MenuItem("yellow");
-        MenuItem redHlt = new MenuItem("red");
-        MenuItem greenHlt = new MenuItem("green");
-        MenuItem blueHlt = new MenuItem("blue");
-        MenuItem blackHlt = new MenuItem("black");
+        MenuItem yellowHlt = new MenuItem("Yellow");
+        MenuItem redHlt = new MenuItem("Red");
+        MenuItem greenHlt = new MenuItem("Green");
+        MenuItem blueHlt = new MenuItem("Blue");
+        MenuItem blackHlt = new MenuItem("Black");
         
-        MenuItem whiteTheme = new MenuItem("white");
-        MenuItem blackTheme = new MenuItem("black");
+        MenuItem whiteTheme = new MenuItem("White");
+        MenuItem blackTheme = new MenuItem("Black");
         
         //adds menu items to the appropriate menus
         fileMenu.getItems().add(newItem);
@@ -109,15 +111,23 @@ public class Main extends Application {
         fontType.getItems().add(sans_serif);
         fontType.getItems().add(monspace);
         fontType.getItems().add(impact);
+        fontType.getItems().add(chalkboard);
+        fontType.getItems().add(trattatello);
         
         fontSizes.getItems().add(fontSize1);
         fontSizes.getItems().add(fontSize2);
         fontSizes.getItems().add(fontSize3);
         fontSizes.getItems().add(fontSize4);
+        fontSizes.getItems().add(fontSize5);
+        fontSizes.getItems().add(fontSize6);
+        fontSizes.getItems().add(fontSize7);
         
         colorMenu.getItems().add(blackTxt);
         colorMenu.getItems().add(redTxt);
         colorMenu.getItems().add(blueTxt);
+        colorMenu.getItems().add(greenTxt);
+        colorMenu.getItems().add(pinkTxt);
+        colorMenu.getItems().add(purpleTxt);
         
         fontStyle.getItems().add(defaultStyle);
         fontStyle.getItems().add(italicItem);
@@ -229,123 +239,13 @@ public class Main extends Application {
             	saveFile(text.getText(), f);
             }
         });
-
-        blackTxt.setOnAction(
-            new EventHandler<ActionEvent>() {
-            	@Override
-            	public void handle(ActionEvent actionevent){
-        			color.delete(0,color.length());
-        			color.append("-fx-text-inner-color: black;");
-            		text.setStyle("-fx-text-inner-color: black;" + font.toString() + themeColor.toString() + style.toString() + txtSize.toString());
-            	}
-        });
-        
-        redTxt.setOnAction(
-        	new EventHandler<ActionEvent>() {
-        		@Override
-        		public void handle(ActionEvent actionevent){
-        			color.delete(0,color.length());
-        			color.append("-fx-text-inner-color: red;");
-        			text.setStyle("-fx-text-inner-color: red;" + font.toString() + themeColor.toString() + style.toString() + txtSize.toString());
-        		}
-        });
-        
-        blueTxt.setOnAction(
-            new EventHandler<ActionEvent>() {
-            	@Override
-            	public void handle(ActionEvent actionevent){
-        			color.delete(0,color.length());
-        			color.append("-fx-text-inner-color: blue;");
-            		text.setStyle("-fx-text-inner-color: blue;" + font.toString() + themeColor.toString() + style.toString() + txtSize.toString());
-            	}
-            });
-        
-        blackTheme.setOnAction(
-        	new EventHandler<ActionEvent>() {
-        		@Override
-        		public void handle(ActionEvent actionevent) {
-        			themeColor.delete(0, color.length());
-        			themeColor.append("-fx-control-inner-background:black;");
-        			color.delete(0,color.length());
-        			color.append("-fx-text-inner-color: white;");
-        			text.setStyle("-fx-control-inner-background:black;" + font.toString() + style.toString() + txtSize.toString() + color.toString());
-        		}
-        });
-        
-        whiteTheme.setOnAction(
-            	new EventHandler<ActionEvent>() {
-            		@Override
-            		public void handle(ActionEvent actionevent) {
-            			themeColor.delete(0, color.length());
-            			themeColor.append("-fx-control-inner-background:white;");
-            			color.delete(0,color.length());
-            			color.append("-fx-text-inner-color: black;");
-            			text.setStyle("text-area-background: red;" + font.toString() + style.toString() + txtSize.toString() + color.toString());
-            		}
-            });
-        
-        fontSize1.setOnAction(
-        		new EventHandler<ActionEvent>() {
-        			public void handle(ActionEvent actionevent) {
-        				txtSize.delete(0,txtSize.length());
-        				txtSize.append("-fx-font-size:12;");
-        				text.setStyle(color.toString() + style.toString() + font.toString() + themeColor.toString() + "-fx-font-size:12;");
-        			}
-        			
-        		}
-        );
-        
-        fontSize2.setOnAction(
-        		new EventHandler<ActionEvent>() {
-        			public void handle(ActionEvent actionevent) {
-        				txtSize.delete(0,txtSize.length());
-        				txtSize.append("-fx-font-size:14;");
-        				text.setStyle(color.toString() + style.toString() + font.toString() + themeColor.toString() + "-fx-font-size:14;");
-        			}
-        			
-        		}
-        );
-        
-        fontSize3.setOnAction(
-        		new EventHandler<ActionEvent>() {
-        			public void handle(ActionEvent actionevent) {
-        				txtSize.delete(0,txtSize.length());
-        				txtSize.append("-fx-font-size:20;");
-        				text.setStyle(color.toString() + style.toString() + font.toString() + themeColor.toString() + "-fx-font-size:20;");
-        			}
-        			
-        		}
-        );
-        
-        fontSize4.setOnAction(
-        		new EventHandler<ActionEvent>() {
-        			public void handle(ActionEvent actionevent) {
-        				txtSize.delete(0,txtSize.length());
-        				txtSize.append("-fx-font-size:30;");
-        				text.setStyle(color.toString() + style.toString() + font.toString() + themeColor.toString() + "-fx-font-size:30;");
-        			}
-        			
-        		}
-        );
-        
-        defaultStyle.setOnAction(
-        		new EventHandler<ActionEvent>() {
-        			public void handle(ActionEvent actionevent) {
-        				style.delete(0,txtSize.length());
-        				style.append("-fx-font-style:normal;");
-        				text.setStyle(color.toString() + txtSize.toString() + font.toString() + themeColor.toString() + "-fx-font-style:normal;");
-        			}
-        			
-        		}
-        );
-        
         
         serif.setOnAction(
         		new EventHandler<ActionEvent>() {
         			public void handle(ActionEvent actionevent) {
-        				font.delete(0,txtSize.length());
-        				font.append("-fx-font-style:serif;");
-        				text.setStyle(color.toString() + txtSize.toString() + style.toString() + themeColor.toString() + "-fx-font-family:serif;");
+        				font.setLength(0);
+        				font.append("-fx-font-family:serif;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
         			}
         			
         		}
@@ -354,9 +254,9 @@ public class Main extends Application {
         monspace.setOnAction(
         		new EventHandler<ActionEvent>() {
         			public void handle(ActionEvent actionevent) {
-        				font.delete(0,txtSize.length());
-        				font.append("-fx-font-style:monospace;");
-        				text.setStyle(color.toString() + txtSize.toString() + style.toString() + themeColor.toString() + "-fx-font-family:monospace;");
+        				font.setLength(0);
+        				font.append("-fx-font-family:monospace;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
         			}
         			
         		}
@@ -365,9 +265,9 @@ public class Main extends Application {
         impact.setOnAction(
         		new EventHandler<ActionEvent>() {
         			public void handle(ActionEvent actionevent) {
-        				font.delete(0,txtSize.length());
-        				font.append("-fx-font-style:impact;");
-        				text.setStyle(color.toString() + txtSize.toString() + style.toString() + themeColor.toString() + "-fx-font-family:impact;");
+        				font.setLength(0);
+        				font.append("-fx-font-family:impact;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
         			}
         			
         		}
@@ -376,9 +276,179 @@ public class Main extends Application {
         sans_serif.setOnAction(
         		new EventHandler<ActionEvent>() {
         			public void handle(ActionEvent actionevent) {
-        				font.delete(0,txtSize.length());
-        				font.append("-fx-font-style:sans-serif;");
-        				text.setStyle(color.toString() + txtSize.toString() + style.toString() + themeColor.toString() + "-fx-font-family:sans-serif;");
+        				font.setLength(0);
+        				font.append("-fx-font-family:sans-serif;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+        			}
+        			
+        		}
+        );
+        
+        chalkboard.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				font.setLength(0);
+        				font.append("-fx-font-family:chalkboard;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+        			}
+        			
+        		}
+        );
+        
+        trattatello.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				font.setLength(0);
+        				font.append("-fx-font-family:trattatello;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+        			}
+        			
+        		}
+        );
+        
+        fontSize1.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				txtSize.setLength(0);
+        				txtSize.append("-fx-font-size:12;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+        			}
+        			
+        		}
+        );
+        
+        fontSize2.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				txtSize.setLength(0);
+        				txtSize.append("-fx-font-size:14;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+        			}
+        			
+        		}
+        );
+        
+        fontSize3.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				txtSize.setLength(0);
+        				txtSize.append("-fx-font-size:20;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+        			}
+        			
+        		}
+        );
+        
+        fontSize4.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				txtSize.setLength(0);
+        				txtSize.append("-fx-font-size:30;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+        			}
+        			
+        		}
+        );
+        
+        fontSize5.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				txtSize.setLength(0);
+        				txtSize.append("-fx-font-size:38;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+        			}
+        			
+        		}
+        );
+        
+        fontSize6.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				txtSize.setLength(0);
+        				txtSize.append("-fx-font-size:48;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+        			}
+        			
+        		}
+        );
+        
+        fontSize7.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				txtSize.setLength(0);
+        				txtSize.append("-fx-font-size:55;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+        			}
+        			
+        		}
+        );
+
+        blackTxt.setOnAction(
+            new EventHandler<ActionEvent>() {
+            	@Override
+            	public void handle(ActionEvent actionevent){
+        			color.setLength(0);
+        			color.append("-fx-text-inner-color: black;");
+            		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+            	}
+        });
+        
+        redTxt.setOnAction(
+        	new EventHandler<ActionEvent>() {
+        		@Override
+        		public void handle(ActionEvent actionevent){
+        			color.setLength(0);
+        			color.append("-fx-text-inner-color: red;");
+            		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+        		}
+        });
+        
+        blueTxt.setOnAction(
+            new EventHandler<ActionEvent>() {
+            	@Override
+            	public void handle(ActionEvent actionevent){
+        			color.setLength(0);
+        			color.append("-fx-text-inner-color: blue;");
+            		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+            	}
+            });
+        
+        greenTxt.setOnAction(
+                new EventHandler<ActionEvent>() {
+                	@Override
+                	public void handle(ActionEvent actionevent){
+            			color.setLength(0);
+            			color.append("-fx-text-inner-color: green;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+                	}
+                });
+        
+        pinkTxt.setOnAction(
+                new EventHandler<ActionEvent>() {
+                	@Override
+                	public void handle(ActionEvent actionevent){
+            			color.setLength(0);
+            			color.append("-fx-text-inner-color: pink;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+                	}
+                });
+        
+        purpleTxt.setOnAction(
+                new EventHandler<ActionEvent>() {
+                	@Override
+                	public void handle(ActionEvent actionevent){
+            			color.setLength(0);
+            			color.append("-fx-text-inner-color: purple;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+                	}
+                });
+        
+        defaultStyle.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				style.setLength(0);
+        				style.append("-fx-font-style:normal;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
         			}
         			
         		}
@@ -387,9 +457,9 @@ public class Main extends Application {
         italicItem.setOnAction(
         		new EventHandler<ActionEvent>() {
         			public void handle(ActionEvent actionevent) {
-        				style.delete(0,txtSize.length());
+        				style.setLength(0);
         				style.append("-fx-font-style:italic;");
-        				text.setStyle(color.toString() + txtSize.toString() + "-fx-font-style:italic;" + themeColor.toString() + font.toString());
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
         			}
         			
         		}
@@ -398,9 +468,9 @@ public class Main extends Application {
         boldItem.setOnAction(
         		new EventHandler<ActionEvent>() {
         			public void handle(ActionEvent actionevent) {
-        				style.delete(0,txtSize.length());
-        				style.append("-fx-font-style:bold;");
-        				text.setStyle(color.toString() + txtSize.toString() + "-fx-font-weight:bold;" + themeColor.toString() + font.toString());
+        				style.setLength(0);
+        				style.append("-fx-font-weight:bold;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
         			}
         			
         		}
@@ -409,9 +479,9 @@ public class Main extends Application {
         yellowHlt.setOnAction(
         		new EventHandler<ActionEvent>() {
         			public void handle(ActionEvent actionevent) {
-        				highlight.delete(0,  highlight.length());
+        				highlight.setLength(0);
         				highlight.append("-fx-highlight-fill: yellow; -fx-highlight-text-fill: black;");
-            			text.setStyle(color.toString() + font.toString() + themeColor.toString() + style.toString() + txtSize.toString() + highlight.toString());
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
                 		text.selectRange(0, text.getLength());
         			}
         		}
@@ -420,9 +490,9 @@ public class Main extends Application {
         redHlt.setOnAction(
         		new EventHandler<ActionEvent>() {
         			public void handle(ActionEvent actionevent) {
-        				highlight.delete(0,  highlight.length());
+        				highlight.setLength(0);
         				highlight.append("-fx-highlight-fill: red; -fx-highlight-text-fill: black;");
-            			text.setStyle(color.toString() + font.toString() + themeColor.toString() + style.toString() + txtSize.toString() + highlight.toString());
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
                 		text.selectRange(0, text.getLength());
         			}
         		}
@@ -431,9 +501,9 @@ public class Main extends Application {
         greenHlt.setOnAction(
         		new EventHandler<ActionEvent>() {
         			public void handle(ActionEvent actionevent) {
-        				highlight.delete(0,  highlight.length());
+        				highlight.setLength(0);
         				highlight.append("-fx-highlight-fill: green; -fx-highlight-text-fill: white;");
-            			text.setStyle(color.toString() + font.toString() + themeColor.toString() + style.toString() + txtSize.toString() + highlight.toString());
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
                 		text.selectRange(0, text.getLength());
         			}
         		}
@@ -442,9 +512,9 @@ public class Main extends Application {
         blueHlt.setOnAction(
         		new EventHandler<ActionEvent>() {
         			public void handle(ActionEvent actionevent) {
-        				highlight.delete(0,  highlight.length());
+        				highlight.setLength(0);
         				highlight.append("-fx-highlight-fill: blue; -fx-highlight-text-fill: white;");
-            			text.setStyle(color.toString() + font.toString() + themeColor.toString() + style.toString() + txtSize.toString() + highlight.toString());
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
                 		text.selectRange(0, text.getLength());
         			}
         		}
@@ -453,15 +523,39 @@ public class Main extends Application {
         blackHlt.setOnAction(
         		new EventHandler<ActionEvent>() {
         			public void handle(ActionEvent actionevent) {
-        				highlight.delete(0,  highlight.length());
+        				highlight.setLength(0);
         				highlight.append("-fx-highlight-fill: black; -fx-highlight-text-fill: white;");
-            			text.setStyle(color.toString() + font.toString() + themeColor.toString() + style.toString() + txtSize.toString() + highlight.toString());
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
                 		text.selectRange(0, text.getLength());
         			}
         		}
         );
+        
+        whiteTheme.setOnAction(
+            	new EventHandler<ActionEvent>() {
+            		@Override
+            		public void handle(ActionEvent actionevent) {
+            			themeColor.setLength(0);
+            			themeColor.append("-fx-control-inner-background:white;");
+            			color.setLength(0);
+            			color.append("-fx-text-inner-color: black;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+            		}
+            });
+        
+        blackTheme.setOnAction(
+        	new EventHandler<ActionEvent>() {
+        		@Override
+        		public void handle(ActionEvent actionevent) {
+        			themeColor.setLength(0);
+        			themeColor.append("-fx-control-inner-background:black;");
+        			color.setLength(0);
+        			color.append("-fx-text-inner-color: white;");
+            		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+        		}
+        });
 
-        primaryStage.setScene(new Scene(box, 500, 500));
+        primaryStage.setScene(new Scene(box, 750, 500));
         primaryStage.show();
     }
     
