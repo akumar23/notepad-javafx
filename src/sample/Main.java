@@ -71,6 +71,7 @@ public class Main extends Application {
         MenuItem sans_serif = new MenuItem("Sans-Serif");
         MenuItem chalkboard = new MenuItem("Chalkboard");
         MenuItem trattatello = new MenuItem("Trattatello");
+        MenuItem georgia = new MenuItem("Georgia");
         
         MenuItem fontSize1 = new MenuItem("Size 5");
         MenuItem fontSize2 = new MenuItem("Size 7");
@@ -96,10 +97,14 @@ public class Main extends Application {
         MenuItem greenTxt = new MenuItem("Green");
         MenuItem pinkTxt = new MenuItem("Pink");
         MenuItem purpleTxt = new MenuItem("Purple");
+        MenuItem orangeTxt = new MenuItem("Orange");
+
         
         MenuItem defaultStyle = new MenuItem("Default");
         MenuItem italicItem = new MenuItem("Italics");
         MenuItem boldItem = new MenuItem("Bold");
+        MenuItem underlineItem = new MenuItem("Underline");
+        MenuItem strikethroughItem = new MenuItem("Strikethrough");
         
         MenuItem yellowHlt = new MenuItem("Yellow");
         MenuItem redHlt = new MenuItem("Red");
@@ -122,6 +127,8 @@ public class Main extends Application {
         fontType.getItems().add(impact);
         fontType.getItems().add(chalkboard);
         fontType.getItems().add(trattatello);
+        fontType.getItems().add(georgia);
+
         
         fontSizes.getItems().add(fontSize1);
         fontSizes.getItems().add(fontSize2);
@@ -138,8 +145,6 @@ public class Main extends Application {
         fontSizes.getItems().add(fontSize13);
         fontSizes.getItems().add(fontSize14);
         fontSizes.getItems().add(fontSize15);
-
-        
         
         colorMenu.getItems().add(blackTxt);
         colorMenu.getItems().add(redTxt);
@@ -147,10 +152,13 @@ public class Main extends Application {
         colorMenu.getItems().add(greenTxt);
         colorMenu.getItems().add(pinkTxt);
         colorMenu.getItems().add(purpleTxt);
+        colorMenu.getItems().add(orangeTxt);
         
         fontStyle.getItems().add(defaultStyle);
         fontStyle.getItems().add(italicItem);
         fontStyle.getItems().add(boldItem);
+        fontStyle.getItems().add(underlineItem);
+        fontStyle.getItems().add(strikethroughItem);
         
         highlightMenu.getItems().add(yellowHlt);
         highlightMenu.getItems().add(redHlt);
@@ -173,6 +181,10 @@ public class Main extends Application {
 
         //creates a vbox and adds the elements of the bar and text to it
         VBox box = new VBox(bar, text);
+        
+        Scene scene = new Scene(box, 750, 500);
+        String css = Main.class.getResource("style.css").toExternalForm();
+        scene.getStylesheets().add(css);
         
         //makes a set on action method for newItem to create a new blank canvas to type on
         newItem.setOnAction(
@@ -301,7 +313,7 @@ public class Main extends Application {
         			}
         			
         		}
-        );
+        );        
         
         chalkboard.setOnAction(
         		new EventHandler<ActionEvent>() {
@@ -319,6 +331,17 @@ public class Main extends Application {
         			public void handle(ActionEvent actionevent) {
         				font.setLength(0);
         				font.append("-fx-font-family:trattatello;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+        			}
+        			
+        		}
+        );
+        
+        georgia.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				font.setLength(0);
+        				font.append("-fx-font-family:georgia;");
                 		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
         			}
         			
@@ -550,6 +573,16 @@ public class Main extends Application {
                 	}
                 });
         
+        orangeTxt.setOnAction(
+                new EventHandler<ActionEvent>() {
+                	@Override
+                	public void handle(ActionEvent actionevent){
+            			color.setLength(0);
+            			color.append("-fx-text-inner-color: orange;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+                	}
+                });
+        
         defaultStyle.setOnAction(
         		new EventHandler<ActionEvent>() {
         			public void handle(ActionEvent actionevent) {
@@ -583,7 +616,31 @@ public class Main extends Application {
         		}
         );
         
-
+        underlineItem.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				if (text.getStyleClass().contains("underline")){
+        					text.getStyleClass().remove("underline");
+        				} else {
+        					text.getStyleClass().add("underline");
+        				}
+        			}
+        			
+        		}
+        );
+        
+        strikethroughItem.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				if (text.getStyleClass().contains("strikethrough")){
+        					text.getStyleClass().remove("strikethrough");
+        				} else {
+        					text.getStyleClass().add("strikethrough");
+        				}
+        			}
+        			
+        		}
+        );
         
         yellowHlt.setOnAction(
         		new EventHandler<ActionEvent>() {
@@ -664,7 +721,7 @@ public class Main extends Application {
         		}
         });
 
-        primaryStage.setScene(new Scene(box, 750, 500));
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
     

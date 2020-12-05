@@ -1,0 +1,7 @@
+.underline .text{
+ 	-fx-underline: True;
+ }
+ 
+ .strikethrough .text{
+ 	-fx-strikethrough: True;
+ }
