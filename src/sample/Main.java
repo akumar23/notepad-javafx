@@ -48,8 +48,7 @@ public class Main extends Application {
         text.setPrefHeight(1000);
         text.setPrefWidth(500);
         
-        
-        
+              
         
         //creates menus
         Menu fileMenu = new Menu("File");
@@ -73,13 +72,23 @@ public class Main extends Application {
         MenuItem chalkboard = new MenuItem("Chalkboard");
         MenuItem trattatello = new MenuItem("Trattatello");
         
-        MenuItem fontSize1 = new MenuItem("Size 12");
-        MenuItem fontSize2 = new MenuItem("Size 14");
-        MenuItem fontSize3 = new MenuItem("Size 20");
-        MenuItem fontSize4 = new MenuItem("Size 30");
-        MenuItem fontSize5 = new MenuItem("Size 38");
-        MenuItem fontSize6 = new MenuItem("Size 48");
-        MenuItem fontSize7 = new MenuItem("Size 55");
+        MenuItem fontSize1 = new MenuItem("Size 5");
+        MenuItem fontSize2 = new MenuItem("Size 7");
+        MenuItem fontSize3 = new MenuItem("Size 8");
+        MenuItem fontSize4 = new MenuItem("Size 10");
+        MenuItem fontSize5 = new MenuItem("Size 12");
+        MenuItem fontSize6 = new MenuItem("Size 14");
+        MenuItem fontSize7 = new MenuItem("Size 18");
+        MenuItem fontSize8 = new MenuItem("Size 20");
+        MenuItem fontSize9 = new MenuItem("Size 24");
+        MenuItem fontSize10 = new MenuItem("Size 26");
+        MenuItem fontSize11 = new MenuItem("Size 28");
+        MenuItem fontSize12 = new MenuItem("Size 36");
+        MenuItem fontSize13 = new MenuItem("Size 40");
+        MenuItem fontSize14 = new MenuItem("Size 48");
+        MenuItem fontSize15 = new MenuItem("Size 55");
+
+
         
         MenuItem blackTxt = new MenuItem("Black");
         MenuItem redTxt = new MenuItem("Red");
@@ -121,6 +130,16 @@ public class Main extends Application {
         fontSizes.getItems().add(fontSize5);
         fontSizes.getItems().add(fontSize6);
         fontSizes.getItems().add(fontSize7);
+        fontSizes.getItems().add(fontSize8);
+        fontSizes.getItems().add(fontSize9);
+        fontSizes.getItems().add(fontSize10);
+        fontSizes.getItems().add(fontSize11);
+        fontSizes.getItems().add(fontSize12);
+        fontSizes.getItems().add(fontSize13);
+        fontSizes.getItems().add(fontSize14);
+        fontSizes.getItems().add(fontSize15);
+
+        
         
         colorMenu.getItems().add(blackTxt);
         colorMenu.getItems().add(redTxt);
@@ -310,7 +329,7 @@ public class Main extends Application {
         		new EventHandler<ActionEvent>() {
         			public void handle(ActionEvent actionevent) {
         				txtSize.setLength(0);
-        				txtSize.append("-fx-font-size:12;");
+        				txtSize.append("-fx-font-size:5;");
                 		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
         			}
         			
@@ -321,7 +340,7 @@ public class Main extends Application {
         		new EventHandler<ActionEvent>() {
         			public void handle(ActionEvent actionevent) {
         				txtSize.setLength(0);
-        				txtSize.append("-fx-font-size:14;");
+        				txtSize.append("-fx-font-size:7;");
                 		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
         			}
         			
@@ -332,7 +351,7 @@ public class Main extends Application {
         		new EventHandler<ActionEvent>() {
         			public void handle(ActionEvent actionevent) {
         				txtSize.setLength(0);
-        				txtSize.append("-fx-font-size:20;");
+        				txtSize.append("-fx-font-size:8;");
                 		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
         			}
         			
@@ -343,7 +362,7 @@ public class Main extends Application {
         		new EventHandler<ActionEvent>() {
         			public void handle(ActionEvent actionevent) {
         				txtSize.setLength(0);
-        				txtSize.append("-fx-font-size:30;");
+        				txtSize.append("-fx-font-size:10;");
                 		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
         			}
         			
@@ -354,7 +373,7 @@ public class Main extends Application {
         		new EventHandler<ActionEvent>() {
         			public void handle(ActionEvent actionevent) {
         				txtSize.setLength(0);
-        				txtSize.append("-fx-font-size:38;");
+        				txtSize.append("-fx-font-size:12;");
                 		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
         			}
         			
@@ -365,7 +384,7 @@ public class Main extends Application {
         		new EventHandler<ActionEvent>() {
         			public void handle(ActionEvent actionevent) {
         				txtSize.setLength(0);
-        				txtSize.append("-fx-font-size:48;");
+        				txtSize.append("-fx-font-size:14;");
                 		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
         			}
         			
@@ -373,6 +392,94 @@ public class Main extends Application {
         );
         
         fontSize7.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				txtSize.setLength(0);
+        				txtSize.append("-fx-font-size:18;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+        			}
+        			
+        		}
+        );
+        
+        fontSize8.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				txtSize.setLength(0);
+        				txtSize.append("-fx-font-size:20;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+        			}
+        			
+        		}
+        );
+        
+        fontSize9.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				txtSize.setLength(0);
+        				txtSize.append("-fx-font-size:24;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+        			}
+        			
+        		}
+        );
+        
+        fontSize10.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				txtSize.setLength(0);
+        				txtSize.append("-fx-font-size:26;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+        			}
+        			
+        		}
+        );
+        
+        fontSize11.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				txtSize.setLength(0);
+        				txtSize.append("-fx-font-size:28;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+        			}
+        			
+        		}
+        );
+        
+        fontSize12.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				txtSize.setLength(0);
+        				txtSize.append("-fx-font-size:36;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+        			}
+        			
+        		}
+        );
+        
+        fontSize13.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				txtSize.setLength(0);
+        				txtSize.append("-fx-font-size:40;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+        			}
+        			
+        		}
+        );
+        
+        fontSize14.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				txtSize.setLength(0);
+        				txtSize.append("-fx-font-size:48;");
+                		text.setStyle(themeColor.toString() + highlight.toString() + style.toString() + color.toString() + txtSize.toString() + font.toString());
+        			}
+        			
+        		}
+        );
+        
+        fontSize15.setOnAction(
         		new EventHandler<ActionEvent>() {
         			public void handle(ActionEvent actionevent) {
         				txtSize.setLength(0);
@@ -475,6 +582,8 @@ public class Main extends Application {
         			
         		}
         );
+        
+
         
         yellowHlt.setOnAction(
         		new EventHandler<ActionEvent>() {
@@ -607,10 +716,10 @@ public class Main extends Application {
     		System.out.println(e.getMessage());
     	}
     }
+    
 
     //main function to launch the notepad
     public static void main(String[] args) {
         launch(args);
     }
 }
-
