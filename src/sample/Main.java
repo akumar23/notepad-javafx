@@ -40,6 +40,7 @@ public class Main extends Application {
         final StringBuilder style = new StringBuilder("-fx-font-style:normal;");
         final StringBuilder font = new StringBuilder("-fx-font-style:normal;");
         final StringBuilder themeColor = new StringBuilder("-fx-control-inner-background:white;");
+        final StringBuilder underlineStatus = new StringBuilder("-fx-underline: false;");
         
         //creates a text area and sets its height and width 
         TextArea text = new TextArea();
@@ -83,6 +84,8 @@ public class Main extends Application {
         MenuItem defaultStyle = new MenuItem("Default");
         MenuItem italicItem = new MenuItem("Italics");
         MenuItem boldItem = new MenuItem("Bold");
+        MenuItem underlineItem = new MenuItem("Underline");
+        MenuItem strikethroughItem = new MenuItem("Strikethrough");
 
         MenuItem whiteTheme = new MenuItem("white");
         MenuItem blackTheme = new MenuItem("black");
@@ -115,7 +118,9 @@ public class Main extends Application {
         
         fontStyle.getItems().add(defaultStyle);
         fontStyle.getItems().add(italicItem);
-        fontStyle.getItems().add(boldItem); 
+        fontStyle.getItems().add(boldItem);
+        fontStyle.getItems().add(underlineItem);
+        fontStyle.getItems().add(strikethroughItem);
         
         themeMenu.getItems().add(whiteTheme); 
         themeMenu.getItems().add(blackTheme);
@@ -131,6 +136,11 @@ public class Main extends Application {
 
         //creates a vbox and adds the elements of the bar and text to it
         VBox box = new VBox(bar, text);
+        
+        Scene scene = new Scene(box, 750, 500);
+        String css = Main.class.getResource("style.css").toExternalForm();
+        scene.getStylesheets().add(css);
+
         
         //makes a set on action method for newItem to create a new blank canvas to type on
         newItem.setOnAction(
@@ -638,7 +648,7 @@ public class Main extends Application {
         				style.append("-fx-font-style:italic;");
         				
         				//sets text style to have the italics font along with all other css related variables
-        				text.setStyle(color.toString() + txtSize.toString() + "-fx-font-style:italic;" + themeColor.toString() + font.toString());
+        				text.setStyle(color.toString() + txtSize.toString() + "-fx-font-style:italic;" + themeColor.toString() + font.toString() + underlineStatus.toString());
         			}
         			
         		}
@@ -657,14 +667,41 @@ public class Main extends Application {
         				style.append("-fx-font-style:bold;");
         				
         				//sets text style to have the bold font and all the other css related variables
-        				text.setStyle(color.toString() + txtSize.toString() + "-fx-font-weight:bold;" + themeColor.toString() + font.toString());
+        				text.setStyle(color.toString() + txtSize.toString() + "-fx-font-weight:bold;" + themeColor.toString() + font.toString() + underlineStatus.toString());
         			}
         			
         		}
         );
         
+        underlineItem.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				if (text.getStyleClass().contains("underline")){
+        					text.getStyleClass().remove("underline");
+        				} else {
+        					text.getStyleClass().add("underline");
+        				}
+        			}
+
+        		}
+        );
+
+        strikethroughItem.setOnAction(
+        		new EventHandler<ActionEvent>() {
+        			public void handle(ActionEvent actionevent) {
+        				if (text.getStyleClass().contains("strikethrough")){
+        					text.getStyleClass().remove("strikethrough");
+        				} else {
+        					text.getStyleClass().add("strikethrough");
+        				}
+        			}
+
+        		}
+        );
+        
         //sets the primary stage with the box, which holds the textArea
-        primaryStage.setScene(new Scene(box, 500, 500));
+        //primaryStage.setScene(new Scene(box, 500, 500));
+        primaryStage.setScene(scene);
         
         //shows primary stage on the javafx canvas
         primaryStage.show();
@@ -724,4 +761,3 @@ public class Main extends Application {
         launch(args);
     }
 }
-
